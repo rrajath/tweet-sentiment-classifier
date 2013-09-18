@@ -16,6 +16,7 @@ abbrFile = '../data/abbr.txt'
 stopwords = readStopwordsFile(stopwordsFile)
 abbr_dict = readAbbrFile(abbrFile)
 
+# This function segregates tweets into positive, negative, neutral and mixed tweets
 def clean_data(original_tweets):
     pos_tweets = []
     neg_tweets = []
@@ -33,7 +34,8 @@ def clean_data(original_tweets):
             neg_tweets.append((process_tweet(tweet),sentiment))
     return pos_tweets, neg_tweets, neu_tweets, mix_tweets
 #end
-    
+
+# This function cleans the data by removing URLs, usernames, hashtags and other irrelevant characters
 def process_tweet(tweet):
     #Removing URls
     tweet = re.sub('((www\.[\s]+)|(https?://[^\s]+))','',tweet)
